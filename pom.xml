@@ -9,9 +9,9 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.maitrongnghia</groupId>
-    <artifactId>resstapi</artifactId>
+    <artifactId>restapi</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>resstapi</name>
+    <name>restapi</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>

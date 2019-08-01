@@ -1,0 +1,47 @@
+CREATE TABLE  user(
+  id INT NOT NULL AUTO_INCREMENT,
+  name VARCHAR(100) NOT NULL,
+  role INT NOT NULL COMMENT 'role = 1: is teacher\nrole = 0: is student',
+  PRIMARY KEY (id));
+
+
+
+CREATE TABLE  course(
+  id INT NOT NULL AUTO_INCREMENT,
+  name VARCHAR(100) NOT NULL,
+  description VARCHAR(200)  NOT NULL,
+  PRIMARY KEY (id));
+
+
+CREATE TABLE  classroom (
+  id INT NOT NULL AUTO_INCREMENT,
+  courseid INT NOT NULL,
+  teacherid INT NOT NULL,
+  kidid INT NOT NULL,
+  starttime TIMESTAMP NOT NULL,
+  status INT NOT NULL COMMENT 'status = 0: not open\nstatus = 1: open',
+  PRIMARY KEY (id),
+  CONSTRAINT FK_USER_CLASSROOM
+    FOREIGN KEY (teacherid)
+    REFERENCES public.user (id)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT FK_USER_CLASSROOM_2
+    FOREIGN KEY (kidid)
+    REFERENCES public.user (id)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT FK_COURSE_CLASSROOM
+    FOREIGN KEY (courseid)
+    REFERENCES public.course (id)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION);
+
+
+CREATE TABLE  acount(
+  id INT NOT NULL AUTO_INCREMENT,
+  username VARCHAR(100) NOT NULL,
+  password VARCHAR(100) NOT NULL,
+  role VARCHAR(100) NOT NULL,
+  PRIMARY KEY (id)
+);
